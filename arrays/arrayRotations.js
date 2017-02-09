@@ -75,6 +75,17 @@ describe("it should test both linear and non linear funcitonality above", functi
 	it('should test the modifiedBtree and expect it to equal 0', function(){
 		expect(modifiedBtree(t3)).to.equal(0);	
 	});
+	it('should test the linearSearch and expect it to equal 4', function(){
+		expect(linearSearch(t1)).to.equal(4);	
+	});
+
+	it('should test the linearSearch and expect it to equal 0', function(){
+		expect(linearSearch(t2)).to.equal(0);	
+	});
+
+	it('should test the linearSearch and expect it to equal 0', function(){
+		expect(linearSearch(t3)).to.equal(0);	
+	});
 
 });
 
