@@ -1,3 +1,8 @@
+var chai = require('chai');
+var mocha = require("mocha");
+var assert = chai.assert;
+var expect = require("chai").expect
+
 /*
 
 	This algorithm is set to find out how many times an array has been rotated. 
@@ -35,6 +40,7 @@ function modifiedBtree(arr){
 	var high = arr.length - 1;
 
 	while(low <= high){
+
 		var next = (mid + 1) % arr.length;
 		var previous = (mid + (arr.length) - 1) % arr.length;
 
@@ -51,7 +57,25 @@ function modifiedBtree(arr){
 	return -1;
 };
 
-var count = linearSearch([11,12,15,18,2,5,6,8]);
-var countBtree = modifiedBtree([11,12,15,18,2,5,6,8]);
-console.log("the array is rotated " , count, " times");
-console.log("the array is rotated " , countBtree, " times");
+var t1 = [11,12,15,18,2,5,6,8];
+var t2 = [2,5,6,8,11,12,15,18];
+var t3 = [1, 2, 3, 4, 5, 6, 7];
+
+
+describe("it should test both linear and non linear funcitonality above", function(){
+
+	it('should test the modifiedBtree and expect it to equal 4', function(){
+		expect(modifiedBtree(t1)).to.equal(4);	
+	});
+
+	it('should test the modifiedBtree and expect it to equal 0', function(){
+		expect(modifiedBtree(t2)).to.equal(0);	
+	});
+
+	it('should test the modifiedBtree and expect it to equal 0', function(){
+		expect(modifiedBtree(t3)).to.equal(0);	
+	});
+
+});
+
+
