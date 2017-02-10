@@ -25,6 +25,7 @@ var expect = require("chai").expect;
 
 var arr = [5,1,4,2,8];
 function bubbleSort(arr){
+    var sorted = arr.sort();
     for(var i = 0; i < arr.length;++i){
         for(var j = 0; j < arr.length; ++j){
             if(arr[j] > arr[j+1]){
@@ -32,9 +33,11 @@ function bubbleSort(arr){
                 arr[j + 1] = arr[j];
                 arr[j] = tmp;
             }
+            if(arr === sorted){
+                return arr;
+            }
         }
     };
-    return arr;
 };
 
 describe("it should test the bubble sort", function(){
