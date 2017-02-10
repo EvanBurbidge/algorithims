@@ -36,7 +36,7 @@ function linearSearch(arr){
 function modifiedBtree(arr){
 
 	var low = 0;
-	var mid = (arr.length) / 2;
+	var mid = Math.round((arr.length) / 2);
 	var high = arr.length - 1;
 
 	while(low <= high){
@@ -46,14 +46,14 @@ function modifiedBtree(arr){
 
 		if(arr[low] <= arr[high]){
 			return low
+		}else if(arr[high] <= arr[high - 1] && arr[high] <= arr[low]){
+			return high;
 		}else if(arr[mid] <= arr[next] && arr[mid] <= arr[previous]){
 			return mid
 		}else if(arr[mid] <= arr[high]){
 			high = mid - 1;
-			console.log(low);
 		}else if(arr[mid] <= arr[low]){
 			low = mid + 1;
-			console.log(low);
 		}
 	}
 	return -1;
@@ -62,6 +62,7 @@ function modifiedBtree(arr){
 var t1 = [11,12,15,18,2,5,6,8];
 var t2 = [2,5,6,8,11,12,15,18];
 var t3 = [1, 2, 3, 4, 5, 6, 7];
+var t4 = [2, 3, 4, 5, 6, 7, 1];
 
 
 describe("it should test both linear and non linear funcitonality above", function(){
@@ -76,6 +77,9 @@ describe("it should test both linear and non linear funcitonality above", functi
 
 	it('should test the modifiedBtree and expect it to equal 0', function(){
 		expect(modifiedBtree(t3)).to.equal(0);	
+	});
+	it('should test the modifiedBtree and expect it to equal t4.length -1 ', function(){
+		expect(modifiedBtree(t4)).to.equal((t4.length - 1));
 	});
 	it('should test the linearSearch and expect it to equal 4', function(){
 		expect(linearSearch(t1)).to.equal(4);	
