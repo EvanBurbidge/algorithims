@@ -50,12 +50,14 @@ function modifiedBtree(arr){
 			return mid
 		}else if(arr[mid] <= arr[high]){
 			high = mid - 1;
+			console.log(low);
 		}else if(arr[mid] <= arr[low]){
 			low = mid + 1;
+			console.log(low);
 		}
 	}
 	return -1;
-};
+}
 
 var t1 = [11,12,15,18,2,5,6,8];
 var t2 = [2,5,6,8,11,12,15,18];
