@@ -16,7 +16,7 @@ var expect = require("chai").expect
 
 function changeEnds (val1, val2, greater) {
     return greater ? val1 > val2 ? val1:val2 :
-                       val1 < val2 ? val1:val2;
+                     val1 < val2 ? val1:val2 ;
 
 }
 
