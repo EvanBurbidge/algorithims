@@ -36,32 +36,17 @@ function findElementBinary(arr, x){
     var low = 0;
     var high = arr.length - 1;
 
+    while(arr[low] > arr[high]){
 
-        while(low <= high){
+        var mid = Math.floor((low + high ) / 2);
 
-            var mid = Math.floor((low + high ) / 2);
-
-            if(x === arr[mid]) {
-                return mid;
-            }
-
-            if(arr[mid] <= arr[high]){
-
-                if(x > arr[mid] && x < arr[high]){
-                    low = mid + 1;
-                }else{
-                    high = mid - 1;
-                }
-
-            }else{
-                if(x >= arr[low] && x <= arr[mid]){
-                    high = mid - 1
-                }else{
-                    low = mid + 1;
-                }
-            }
+        if(arr[mid] > arr[high]){
+            low = mid + 1
+        }else{
+            high = mid;
         }
-    return -1;
+    }
+    return low;
 }
 
 //console.log(findElementBinary(, 2));
