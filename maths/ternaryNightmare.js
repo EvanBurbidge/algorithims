@@ -1,7 +1,7 @@
 var chai = require('chai');
 var mocha = require("mocha");
 var assert = chai.assert;
-var expect = require("chai").expect
+var expect = require("chai").expect;
 
 /*
  * @name changeEnds
