@@ -22,7 +22,9 @@ function LinkedList() {
     this.head = null;
     this.size = 0;
 }
-
+/*
+ * This function runs in O(1) time complexity
+ * */
 LinkedList.prototype.insertStart = function(data){
     //increment the size of the list
   this.size++;
@@ -56,7 +58,9 @@ LinkedList.prototype.getSizeLong = function(){
     }
     return size
 };
-
+/*
+ * This function runs in O(N) time complexity
+ * */
 LinkedList.prototype.traverse = function(){
   var actualNode = this.head;
 
@@ -65,7 +69,9 @@ LinkedList.prototype.traverse = function(){
       actualNode = actualNode.nextNode;
   }
 };
-
+/*
+ * This function runs in O(N) time complexity
+ * */
 LinkedList.prototype.insertEnd = function(data){
     var newNode = new Node(data);
     var current = this.head;
@@ -77,7 +83,9 @@ LinkedList.prototype.insertEnd = function(data){
     }
     current.nextNode = newNode;
 };
-
+/*
+ * This function runs in O(N) time complexity
+ * */
 LinkedList.prototype.removeItem = function(data){
     //if its empty return
     if(this.head === null){
@@ -103,7 +111,6 @@ LinkedList.prototype.removeItem = function(data){
     }
 
 };
-
 
 describe('it should test the linked list', function () {
     var linkedList = new LinkedList();
