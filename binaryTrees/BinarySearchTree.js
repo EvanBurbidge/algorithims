@@ -39,18 +39,29 @@ Bst.prototype.insert_node = function (node, data) {
 };
 
 //The helper to get us started searching for an item
-Bst.prototype.get_end_value = function(direction){
+Bst.prototype.get_min = function(){
     if(this.root){
-        this.get_min(direction, this.root)
+        return  this.get_min_value(this.root);
+    }
+};
+Bst.prototype.get_min_value = function(node){
+    if(node.leftChild){
+       return this.get_min_value(node.leftChild)
+    }
+    return node.data;
+};
+
+Bst.prototype.get_max = function () {
+    if(this.root){
+        return this.get_max_value(this.root);
     }
 };
 
-//this looks at the left + right recursively
-Bst.prototype.recursive_value_search = function (direction, node) {
-    if(node[direction]){
-        this.get_min(node[direction]);
+Bst.prototype.get_max_value = function(node){
+    if(node.rightChild){
+        return this.get_max_value(node.rightChild);
     }
-    return node.data
+    return node.data;
 };
 
 Bst.prototype.traverse = function () {
@@ -61,13 +72,12 @@ Bst.prototype.traverse = function () {
 
 Bst.prototype.traverse_in_order = function (node) {
     if(!!node.leftChild){
-        this.traverse_in_order(node.leftChild);
+        return this.traverse_in_order(node.leftChild);
     }
     console.log(node.data);
     if(!!node.rightChild){
-        this.traverse_in_order(node.rightChild);
+        return this.traverse_in_order(node.rightChild);
     }
-
 };
 
 Bst.prototype.remove = function(data){
@@ -80,7 +90,6 @@ Bst.prototype.remove_node = function(node, data){
     if(!node){
         return null;
     }
-
     if(data < node.data){
         node.leftChild = this.remove_node(node.leftChild, data);
     }else if(data > node.data){
@@ -126,6 +135,31 @@ var test = new Bst();
     test.traverse();
     test.remove(29);
     test.remove(9);
-    test.traverse()
+    test.traverse();
+
+describe("it should test the BST", function(){
+    var bst = new Bst();
+    it('should insert a number of items', function(){
+        bst.insert(10);
+        bst.insert(8);
+        bst.insert(9);
+        bst.insert(20);
+        bst.insert(21);
+        expect(bst.get_min()).to.equal(8);
+    });
+
+    it('should remove the lowest item', function(){
+        expect(bst.get_max()).to.equal(21);
+        bst.remove(21);
+        expect(bst.get_max()).to.equal(20);
+        bst.remove(20);
+        expect(bst.get_max()).to.equal(10);
+    });
+
+    it('should remove all items', function () {
+        bst.empty();
+        console.log(bst);
+    });
+});
 
 
