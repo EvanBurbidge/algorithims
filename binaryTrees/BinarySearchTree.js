@@ -155,11 +155,6 @@ describe("it should test the BST", function(){
         bst.remove(20);
         expect(bst.get_max()).to.equal(10);
     });
-
-    it('should remove all items', function () {
-        bst.empty();
-        console.log(bst);
-    });
 });
 
 
